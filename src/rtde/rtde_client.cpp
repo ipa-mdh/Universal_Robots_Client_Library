@@ -334,7 +334,7 @@ void RTDEClient::setupInputs()
     if (!pipeline_.getLatestProduct(package, std::chrono::milliseconds(1000)))
     {
       URCL_LOG_ERROR("Did not receive confirmation on RTDE input recipe, disconnecting");
-      disconnect();
+      // disconnect();
       return;
     }
 
