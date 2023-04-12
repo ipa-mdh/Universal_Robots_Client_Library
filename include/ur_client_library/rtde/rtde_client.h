@@ -189,6 +189,16 @@ public:
     return output_recipe_;
   }
 
+  /*!
+   * \brief Getter for the RTDE input recipe.
+   *
+   * \returns The input recipe
+   */
+  std::vector<std::string> getInputRecipe()
+  {
+    return input_recipe_;
+  }
+
 private:
   comm::URStream<RTDEPackage> stream_;
   std::vector<std::string> output_recipe_;

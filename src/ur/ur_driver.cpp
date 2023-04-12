@@ -412,6 +412,11 @@ std::vector<std::string> UrDriver::getRTDEOutputRecipe()
   return rtde_client_->getOutputRecipe();
 }
 
+std::vector<std::string> UrDriver::getRTDEInputRecipe()
+{
+  return rtde_client_->getInputRecipe();
+}
+
 void UrDriver::setKeepaliveCount(const uint32_t& count)
 {
   reverse_interface_->setKeepaliveCount(count);

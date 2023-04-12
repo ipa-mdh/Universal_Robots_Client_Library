@@ -321,6 +321,11 @@ void RTDEClient::setupInputs()
   size_t written;
   uint8_t buffer[4096];
   size = ControlPackageSetupInputsRequest::generateSerializedRequest(buffer, input_recipe_);
+  if (size == 0)
+  {
+    URCL_LOG_WARN("The input recipe is empty. Therefore no 'RTDE-wirter' is initialised.");
+    return;
+  }
   if (!stream_.write(buffer, size, written))
   {
     URCL_LOG_ERROR("Could not send RTDE input recipe to robot, disconnecting");
@@ -334,7 +339,7 @@ void RTDEClient::setupInputs()
     if (!pipeline_.getLatestProduct(package, std::chrono::milliseconds(1000)))
     {
       URCL_LOG_ERROR("Did not receive confirmation on RTDE input recipe, disconnecting");
-      // disconnect();
+      disconnect();
       return;
     }
 
